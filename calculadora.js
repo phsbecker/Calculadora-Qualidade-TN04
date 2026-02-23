@@ -6,21 +6,32 @@ function input(vinput){
 }
 
 function calcular(){
-    if(ninput == ""){
-        ninput == ""
-    }else{
-        ninput = eval(ninput);
+    if(ninput === ""){
+        return;
     }
-    document.getElementById("input").value = ninput;
 
-    if(ninput =="Infinity"){
-        alert("evita dog");
-        ninput == "";
+    try {
+        let resultado = eval(ninput);
+
+        if (!isFinite(resultado)) {
+            alert("Cálculo inválido\nLimpando entrada");
+            ninput = "";
+        
+        }else{
+            resultado = Number(resultado.toFixed(2));
+            ninput = resultado;
+        }
+
+    }catch (error) {
+        alert("Expressão inválida");
+        ninput = "";
     }
+
+    document.getElementById("input").value = ninput;
 }
 
 function clearInput(){
-    ninput = "";
+    ninput == "";
     document.getElementById("input").value = ninput;
 }
 
